@@ -10,21 +10,8 @@
   <h1>Bat-Bowl-Stump Game</h1>
   <div class="btnContainer">
   <button class="btn" id="btn1" 
-  onclick="console.log('You have choosen bat');
-   let randomNumber=Math.random()*3;
-   let computerChoice;
-   if(randomNumber>0 && randomNumber<=1){
-    computerChoice='Bat';
-  // console.log('computer has choosen bat');
-   } 
-   else if(randomNumber>1 && randomNumber<=2){
-   computerChoice='Bowl';
-  //  console.log('computer has choosen Bowl');
-   }
-   else {
-     computerChoice='Stump';
-  //   console.log('computer has choosen stump')
-    }
+  onclick="
+    generateComputerCHoice();
     console.log(`computer has choosen ${computerChoice}`);
     let result;
     if(computerChoice==='Bat') result='Game is Tie';
@@ -35,21 +22,8 @@
     ">Bat</button>
 
   <button class="btn" id="btn2" 
-  onclick="console.log('You have choosen bat');
-   let randomNumber=Math.random()*3;
-   let computerChoice;
-   if(randomNumber>0 && randomNumber<=1){
-    computerChoice='Bat';
-  // console.log('computer has choosen bat');
-   } 
-   else if(randomNumber>1 && randomNumber<=2){
-   computerChoice='Bowl';
-  //  console.log('computer has choosen Bowl');
-   }
-   else {
-     computerChoice='Stump';
-  //   console.log('computer has choosen stump')
-    }
+  onclick="
+   generateComputerCHoice();
     console.log(`computer has choosen ${computerChoice}`);
     let result;
     if(computerChoice==='Bat') result='Computer Won'
@@ -60,21 +34,8 @@
   
   >Bowl</button>
   <button class="btn" id="btn3"
-  onclick="console.log('You have choosen bat');
-   let randomNumber=Math.random()*3;
-   let computerChoice;
-   if(randomNumber>0 && randomNumber<=1){
-    computerChoice='Bat';
-  // console.log('computer has choosen bat');
-   } 
-   else if(randomNumber>1 && randomNumber<=2){
-   computerChoice='Bowl';
-  //  console.log('computer has choosen Bowl');
-   }
-   else {
-     computerChoice='Stump';
-  //   console.log('computer has choosen stump')
-    }
+  onclick="
+   generateComputerCHoice();
     console.log(`computer has choosen ${computerChoice}`);
     let result;
     if(computerChoice==='Bat') result='User Won'
@@ -85,6 +46,20 @@
   
   >Stump</button>
   </div>
-  
+  <script>
+    let computerChoice;
+    function generateComputerCHoice(){
+      let randomNumber =Math.random()*3;
+   if(randomNumber>0 && randomNumber<=1){
+    computerChoice='Bat';
+   } 
+   else if(randomNumber>1 && randomNumber<=2){
+   computerChoice='Bowl';
+   }
+   else {
+     computerChoice='Stump';
+    }
+  }
+  </script>
 </body>
 </html>
