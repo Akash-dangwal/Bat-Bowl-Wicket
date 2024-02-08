@@ -4,62 +4,72 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="index.css">
-  <title>Bat-Bowl_stump Game</title>
+  <title>Bat-Ball_stump Game</title>
 </head>
 <body>
-  <h1>Bat-Bowl-Stump Game</h1>
+  <h1>Bat-Ball-Stump Game</h1>
   <div class="btnContainer">
   <button class="btn" id="btn1" 
   onclick="
-    generateComputerCHoice();
+    let computerChoice= generateComputerCHoice();
     console.log(`computer has choosen ${computerChoice}`);
-    let result;
-    if(computerChoice==='Bat') result='Game is Tie';
-    else if(computerChoice==='Bowl') result='User Won';
-    else result='Computer Wins';
+    let result=generateResult('Bat',computerChoice);
 
-    alert(`You have choosen bat. Computer Choice is ${computerChoice} and ${result} `)
+    showResult('Bat',computerChoice,result);
     ">Bat</button>
 
   <button class="btn" id="btn2" 
   onclick="
-   generateComputerCHoice();
+  computerChoice= generateComputerCHoice();
     console.log(`computer has choosen ${computerChoice}`);
-    let result;
-    if(computerChoice==='Bat') result='Computer Won'
-    else if(computerChoice==='Bowl') result='Game is Tie';
-    else result='User wins';
-
-    alert(`You have choosen Bowl. Computer Choice is ${computerChoice} and ${result} `)"
+    result=generateResult('Ball',computerChoice);
+    showResult('Ball',computerChoice,result);"
   
-  >Bowl</button>
+  >Ball</button>
   <button class="btn" id="btn3"
   onclick="
-   generateComputerCHoice();
+  computerChoice= generateComputerCHoice();
     console.log(`computer has choosen ${computerChoice}`);
-    let result;
-    if(computerChoice==='Bat') result='User Won'
-    else if(computerChoice==='Bowl') result='Computer Won';
-    else result='Game is Tie';
-
-    alert(`You have choosen Stump. Computer Choice is ${computerChoice} and ${result} `)"
-  
-  >Stump</button>
+    result=generateResult('Stump',computerChoice);
+    showResult('Stump',computerChoice,result);
+  ">Stump</button>
   </div>
   <script>
-    let computerChoice;
+    // let computerChoice;
     function generateComputerCHoice(){
       let randomNumber =Math.random()*3;
    if(randomNumber>0 && randomNumber<=1){
-    computerChoice='Bat';
+    return 'Bat';
    } 
    else if(randomNumber>1 && randomNumber<=2){
-   computerChoice='Bowl';
+   return 'Ball';
    }
    else {
-     computerChoice='Stump';
+     return 'Stump';
     }
   }
+  function generateResult(userMove,computerMove){
+    if (userMove==='Bat'){
+      if(computerMove==='Bat') return 'Game is Tie';
+    else if(computerMove==='Ball') return 'User Won';
+    else return 'Computer Wins';
+    }
+    else if(userMove==='Ball'){
+      if(computerMove==='Bat') return 'Computer Won'
+    else if(computerMove==='Ball') return 'Game is Tie';
+    else return 'User wins';
+    }
+    else {
+      if(computerMove==='Bat') return 'User Won'
+    else if(computerMove==='Ball') return 'Computer Won';
+    else return 'Game is Tie';
+    }
+  }
+    function showResult(userMove,computerMove,result){
+      alert(`You have choosen ${userMove}. Computer Choice is ${computerMove} and ${result} `);
+
+    }
+
   </script>
 </body>
 </html>
