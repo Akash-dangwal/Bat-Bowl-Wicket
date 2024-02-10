@@ -43,8 +43,8 @@
     let scoreStr=localStorage.getItem('Score');
     let score;
     resetScore(scoreStr);
-    function resetScore(scoreStre){
-     score=JSON.parse(scoreStr)||{
+    function resetScore(scoreStr){
+     score=scoreStr? JSON.parse(scoreStr): {
       Win:0,
       Tie:0,
       Lost:0,
@@ -52,6 +52,7 @@
     score.displayScore=function(){
        return `Won:${score.Win}, Lost:${score.Lost}, Tie:${score.Tie}`
       }
+      showResult();
     }
 
     function generateComputerCHoice(){
@@ -88,9 +89,9 @@
   }
     function showResult(userMove,computerMove,result){
       localStorage.setItem('Score',JSON.stringify(score));
-      document.querySelector('#user-move').innerText=`You have choosen ${userMove}`;
-      document.querySelector('#computer-move').innerText=` Computer Choice is ${computerMove}.`;
-      document.querySelector('#result').innerText=result;
+      document.querySelector('#user-move').innerText=userMove!==undefined?`You have choosen ${userMove}`:'' ;
+      document.querySelector('#computer-move').innerText=computerMove!==undefined?` Computer Choice is ${computerMove}.`:'';
+      document.querySelector('#result').innerText=result!==undefined? result:'' ;
       document.querySelector('#score').innerText=score.displayScore();
     }
 
